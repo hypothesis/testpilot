@@ -7,12 +7,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Create GitHub release
-        run: |
-          last_version="$(gh release view --json name | jq .name)"
-          next_version=bin/next_version "$last_version"
-          echo "The last version is $last_version"
-          echo "Creating new version $next_version"
-          gh release create --generate-notes "$next_version"
+        run: gh release create --generate-notes "$(gh release view --json name | jq .name | xargs bin/next_version)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   pypi:
