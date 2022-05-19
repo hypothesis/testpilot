@@ -23,7 +23,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: .tox
-          key: ${{ runner.os }}_tox_${{ hashFiles('setup.cfg') }}-${{ hashFiles('requirements/*') }}
+          key: ${{ runner.os }}_tox_${{ hashFiles('setup.cfg') }}_${{ hashFiles('requirements/*') }}
           restore-keys: |
             ${{ runner.os }}_tox_
       - name: Run tox
