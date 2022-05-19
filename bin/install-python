@@ -4,12 +4,13 @@
 # in pyenv and that tox is installed within each version of Python.
 set -euo pipefail
 
+# Don't install Python on GitHub Actions.
 if [ -n "${GITHUB_ACTIONS+x}" ]; then exit; fi
 
-pyenv_root="$(pyenv root)"
+pyenv_root=$(pyenv root)
 
 for python_version in $(pyenv local); do
-    bin_dir="$pyenv_root/versions/$python_version/bin"
+    bin_dir=$pyenv_root/versions/$python_version/bin
     if [ ! -f "$bin_dir"/tox ]; then
         pyenv install --skip-existing "$python_version"
         "$bin_dir"/pip install --disable-pip-version-check tox
