@@ -23,8 +23,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: .tox
-          key: ${{ runner.os }}-tox-${{ hashFiles('setup.cfg') }}-${{ hashFiles('requirements/*') }}
+          key: ${{ runner.os }}_tox_${{ hashFiles('setup.cfg') }}-${{ hashFiles('requirements/*') }}
           restore-keys: |
-            ${{ runner.os }}-tox-
+            ${{ runner.os }}_tox_
       - name: Run tox
         run: tox --parallel -e checkformatting,lint,tests,coverage
