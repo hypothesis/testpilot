@@ -40,10 +40,3 @@ touch -a requirements/tests-py38.txt
 pyenv exec tox -e py38-dev --force-dep 'pip-tools' --run-command 'pip-compile --output-file requirements/requirements-py38.txt setup.cfg'
 pyenv exec tox -e py38-dev --force-dep 'pip-tools' --run-command 'pip-compile --output-file requirements/dev-py38.txt requirements/dev.in'
 pyenv exec tox -e py38-tests --force-dep 'pip-tools' --run-command 'pip-compile --output-file requirements/tests-py38.txt requirements/tests.in'
-
-touch -a requirements/requirements-py37.txt
-touch -a requirements/dev-py37.txt
-touch -a requirements/tests-py37.txt
-pyenv exec tox -e py37-dev --force-dep 'pip-tools' --run-command 'pip-compile --output-file requirements/requirements-py37.txt setup.cfg'
-pyenv exec tox -e py37-dev --force-dep 'pip-tools' --run-command 'pip-compile --output-file requirements/dev-py37.txt requirements/dev.in'
-pyenv exec tox -e py37-tests --force-dep 'pip-tools' --run-command 'pip-compile --output-file requirements/tests-py37.txt requirements/tests.in'

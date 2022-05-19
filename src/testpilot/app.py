@@ -3,6 +3,7 @@ import os
 import subprocess
 import sys
 from functools import lru_cache
+from importlib.metadata import version
 from subprocess import CalledProcessError
 from typing import List
 
@@ -408,8 +409,13 @@ def main():
         description="Format, lint and test only the files that have changed on this branch.",
     )
     parser.add_argument("-d", "--debug", action="store_true")
+    parser.add_argument("-v", "--version", action="store_true")
 
     args = parser.parse_args()
+
+    if args.version:
+        print(version("testpilot"))
+        sys.exit()
 
     try:
         run(
