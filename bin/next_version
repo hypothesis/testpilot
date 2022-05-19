@@ -6,6 +6,8 @@ version number by incrementing the patch version:
     $ bin/next_version 1.2.3
     1.2.4
 
+This doesn't do robust semantic version number parsing. It assumes that the
+given version number is a simple one like 1.2.3.
 """
 import sys
 
