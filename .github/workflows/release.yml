@@ -1,7 +1,7 @@
 name: Release
 on: [workflow_dispatch]
 jobs:
-  build:
+  GitHub Release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -12,6 +12,13 @@ jobs:
         run: gh release create --generate-notes "$(gh release view --json name | jq .name | xargs bin/next_version)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  PyPI Package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Upgrade pip
         run: python3 -m pip install --upgrade pip
       - name: Check version number
