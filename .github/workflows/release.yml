@@ -4,6 +4,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: gh release create --repo seanh/testpilot --generate-notes 0.0.5
+      - run: gh release create --repo seanh/testpilot --generate-notes 0.0.6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
