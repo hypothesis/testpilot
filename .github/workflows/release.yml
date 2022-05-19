@@ -15,7 +15,7 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install --upgrade build twine
           python3 -m build
-          python3 -m twine --verbose upload dist/*
+          python3 -m twine upload --verbose dist/*
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
