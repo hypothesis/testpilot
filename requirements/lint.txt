@@ -24,8 +24,6 @@ pylint==2.13.9
     # via -r requirements/lint.in
 snowballstemmer==2.2.0
     # via pydocstyle
-toml==0.10.2
-    # via -r requirements/lint.in
 tomli==2.0.1
     # via
     #   -c requirements/tests.txt

@@ -1,5 +1,4 @@
 -c tests.txt
-toml # Needed for pydocstyle to support pyproject.toml.
 pylint
 pydocstyle
 pycodestyle

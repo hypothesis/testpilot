@@ -4,5 +4,5 @@
 #
 #    bin/compile-requirements
 #
-toml==0.10.2
+toml==0.10.1
     # via testpilot (setup.cfg)
