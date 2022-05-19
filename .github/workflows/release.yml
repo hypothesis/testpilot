@@ -10,9 +10,14 @@ jobs:
         run: gh release create --generate-notes "$(gh release view --json name | jq .name | xargs bin/next_version)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upgrade pip
+        run: python3 -m pip install --upgrade pip
+      - name: Check version number
+        run: |
+          python3 -m pip install setuptools_scm
+          python3 -m setuptools_scm
       - name: Build and publish pypi.org release
         run: |
-          python3 -m pip install --upgrade pip
           python3 -m pip install --upgrade build twine
           python3 -m build
           python3 -m twine upload --verbose dist/*
