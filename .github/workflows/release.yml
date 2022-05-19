@@ -8,11 +8,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Python
         uses: actions/setup-python@v3
-        with:
-          cache: "pip"
-      - name: Upgrade pip
-        run: python -m pip install --upgrade pip
-      - run: pip install setuptools_scm semver
-      - run: gh release create --repo seanh/testpilot --generate-notes "$(bin/next_version)"
+      - name: Create GitHub release
+        run: gh release create --repo seanh/testpilot --generate-notes "$(gh release view --json name | jq .name | xargs bin/next_version)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
