@@ -9,7 +9,8 @@ jobs:
     env:
       TOX_PARALLEL_NO_SPINNER: 1
     steps:
-      - uses: actions/checkout@v3
+      - name: Check-out the repo
+        uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
@@ -22,7 +23,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: .tox
-          key: ${{ runner.os }}-tox-${{ hashFiles('tox.ini') }}-${{ hashFiles('requirements/*') }}-${{ hashFiles('setup.py') }}-${{ hashFiles('setup.cfg') }}
+          key: ${{ runner.os }}-tox-${{ hashFiles('setup.cfg') }}-${{ hashFiles('requirements/*') }}
           restore-keys: |
             ${{ runner.os }}-tox-
       - name: Run tox
