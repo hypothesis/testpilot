@@ -11,6 +11,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   pypi:
+    needs: github
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
