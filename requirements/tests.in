@@ -1,0 +1,5 @@
+-c requirements.txt
+coverage[toml]
+pytest
+factory-boy
+h-matchers
