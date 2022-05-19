@@ -14,8 +14,9 @@ jobs:
         run: python3 -m pip install --upgrade pip
       - name: Check version number
         run: |
+          git tag
           python3 -m pip install setuptools_scm
-          python3 -m setuptools_scm
+          python3 -m setuptools_scm --help
       - name: Build and publish pypi.org release
         run: |
           python3 -m pip install --upgrade build twine
