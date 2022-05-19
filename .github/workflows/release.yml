@@ -1,7 +1,7 @@
 name: Release
 on: [workflow_dispatch]
 jobs:
-  GitHub Release:
+  github:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -12,7 +12,7 @@ jobs:
         run: gh release create --generate-notes "$(gh release view --json name | jq .name | xargs bin/next_version)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  PyPI Package:
+  pypi:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
