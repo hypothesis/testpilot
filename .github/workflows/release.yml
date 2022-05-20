@@ -20,6 +20,7 @@ jobs:
           fetch-depth: 0
       - name: Build PyPI package
         run: |
+          python3 -m pip install --upgrade pip
           python3 -m pip install --upgrade build
           python3 -m build
       - name: Publish PyPI package
