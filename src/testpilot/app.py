@@ -412,7 +412,14 @@ def main():
     )
     parser.add_argument("-d", "--debug", action="store_true")
     parser.add_argument("-v", "--version", action="store_true")
-    parser.add_argument("-t", "-s", "--tox", "--slower", action="store_true", help="Run all commands in tox instead of directly")
+    parser.add_argument(
+        "-t",
+        "-s",
+        "--tox",
+        "--slower",
+        action="store_true",
+        help="Run all commands in tox instead of directly",
+    )
 
     args = parser.parse_args()
 
