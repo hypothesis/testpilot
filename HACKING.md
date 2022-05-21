@@ -4,13 +4,13 @@ Setting up Your Test Pilot Development Environment
 You will need
 -------------
 
-Before setting up your Test Pilot development environment you'll need to install:
+You'll need to install:
 
 * [Git](https://git-scm.com/)
 * [GNU Make](https://www.gnu.org/software/make/)
-  (This is probably already installed.)
+  (this is probably already installed, run `which make` to check)
 * [pyenv](https://github.com/pyenv/pyenv)
-  (You *don't* need to install pyenv's shell integration. Just the `pyenv` command will do.)
+  (you *don't* need to install pyenv's shell integration. Just the `pyenv` command will do.)
 
 Setting up your development environment
 ---------------------------------------
