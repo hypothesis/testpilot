@@ -8,6 +8,12 @@ help:
 	@echo "make coverage          Print the unit test coverage report"
 	@echo "make sure              Make sure that the formatter, linter, tests, etc all pass"
 	@echo "make requirements      Re-compile all the requirements/*.txt files"
+	@echo "make release           Create a new patch release on GitHub"
+	@echo "                       Creates a new release from the latest commit on GitHub,"
+	@echo "                       not from the contents of your local copy."
+	@echo "                       Creating a new GitHub release will trigger the publish"
+	@echo "                       workflow on GitHub actions to publish the release to"
+	@echo "                       PyPI.org."
 	@echo "make clean             Delete development artefacts (cached files, "
 	@echo "                       dependencies, etc)"
 
@@ -37,6 +43,10 @@ sure: checkformatting lint test coverage
 .PHONY: requirements
 requirements:
 	bin/compile-requirements
+
+.PHONY: release
+release:
+	bin/create_new_patch_release.py
 
 .PHONY: clean
 clean:
