@@ -14,6 +14,9 @@ You now have Test Pilot installed! For some help run:
 testpilot --help
 ```
 
+Upgrading
+---------
+
 To upgrade to the latest version run:
 
 ```terminal
@@ -24,4 +27,13 @@ To see what version you have run:
 
 ```terminal
 testpilot --version
+```
+
+Uninstalling
+------------
+
+To uninstall Test Pilot run:
+
+```
+pipx uninstall testpilot
 ```
