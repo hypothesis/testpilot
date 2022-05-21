@@ -262,6 +262,7 @@ class StandardProject:
             log("Running unit tests")
             self.run("tests", "coverage run -m pytest --quiet", self.unit_test_files)
 
+            log("Printing coverage report")
             self.run("tests", "coverage combine --quiet", [])
             self.run(
                 "tests",
