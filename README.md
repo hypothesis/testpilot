@@ -1,8 +1,8 @@
 Test Pilot
 ==========
 
-Test Pilot formats, lints and tests only those files that have changed on your
-current branch compared to main:
+Test Pilot formats, lints and tests the files that have changed on your current
+branch compared to main:
 
 ```terminal
 $ testpilot
@@ -26,7 +26,7 @@ testpilot=> Running functional tests
 .
 ```
 
-Test Pilot compares your branch to main and finds:
+It compares your branch to main and finds:
 
 * New, modified and deleted files
 * Committed, staged and untracked changes
@@ -43,7 +43,7 @@ sure` once before sending your pull request.
 
 ## Only for Hypothesis projects
 
-**Test Pilot only works with Hypothesis projects.**
+For now, **Test Pilot only works with Hypothesis projects.**
 It uses all sorts of knowledge and assumptions about how the Hypothesis
 development environment works, what formatting, testing and linting tools we use,
 how we organize our test files, etc.
