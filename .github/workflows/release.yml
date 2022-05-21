@@ -1,4 +1,4 @@
-name: Create GitHub release
+name: Create a new patch release
 on: [workflow_dispatch]
 jobs:
   github:
