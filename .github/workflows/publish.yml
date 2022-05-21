@@ -1,7 +1,7 @@
 name: Publish to PyPI.org
 on:
   release:
-    types: [created]
+    types: [published]
 jobs:
   pypi:
     runs-on: ubuntu-latest
