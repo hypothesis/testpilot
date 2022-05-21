@@ -32,7 +32,7 @@ testpilot --version
 Uninstalling
 ------------
 
-To uninstall Test Pilot run:
+To uninstall run:
 
 ```
 pipx uninstall testpilot
