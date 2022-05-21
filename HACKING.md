@@ -1,0 +1,36 @@
+Setting up Your Test Pilot Development Environment
+==================================================
+
+You will need
+-------------
+
+Before setting up your Test Pilot development environment you'll need to install:
+
+* [Git](https://git-scm.com/)
+* [GNU Make](https://www.gnu.org/software/make/)
+  (This is probably already installed.)
+* [pyenv](https://github.com/pyenv/pyenv)
+  (You *don't* need to install pyenv's shell integration. Just the `pyenv` command will do.)
+
+Setting up your development environment
+---------------------------------------
+
+To set up your development environment and make sure that everything's working
+just clone the git repo and run `make sure`:
+
+```
+git clone https://github.com/hypothesis/testpilot.git
+cd testpilot
+make sure
+```
+
+`make sure` will run Test Pilot's code formatting, linting and tests.
+The first run might take a while because it'll be calling `pyenv` to install
+the necessary versions of Python and calling `tox` to install the Python
+dependencies into virtualenvs. Subsequent runs will be faster.
+
+Run `make help` to see what other development environment commands are available:
+
+```
+make help
+```
