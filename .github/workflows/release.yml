@@ -1,4 +1,4 @@
-name: Bump patch number and create GitHub release
+name: Create GitHub release
 on: [workflow_dispatch]
 jobs:
   github:
