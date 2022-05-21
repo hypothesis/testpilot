@@ -8,6 +8,12 @@ First [install pipx](https://pypa.github.io/pipx/#install-pipx) then run:
 pipx install testpilot
 ```
 
+You now have Test Pilot installed! For some help run:
+
+```
+testpilot --help
+```
+
 To upgrade to the latest version run:
 
 ```terminal
