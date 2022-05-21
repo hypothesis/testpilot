@@ -31,9 +31,9 @@ class StandardProject:
 
     run_pycodestyle = True
 
-    def __init__(self, debug):
+    def __init__(self, tox, debug):
         self.debug = debug
-        self.run = Run(debug)
+        self.run = Run(tox, debug)
 
     @property
     @lru_cache()
@@ -377,7 +377,8 @@ class PythonPackageProject(StandardProject):
 
 
 class Run:
-    def __init__(self, debug):
+    def __init__(self, tox, debug):
+        self.tox = tox
         self.debug = debug
 
     def __call__(self, env, cmd, files, options=""):
@@ -390,7 +391,7 @@ class Run:
             log(f"It looks like {executable} doesn't exist, running tox to install it")
             executable_exists = False
 
-        if executable_exists:
+        if executable_exists and not self.tox:
             fmt = "pyenv exec .tox/{env}/bin/{cmd} {args}"
         else:
             fmt = "pyenv exec tox -e {env} --run-command '{cmd} {args}'"
@@ -411,6 +412,7 @@ def main():
     )
     parser.add_argument("-d", "--debug", action="store_true")
     parser.add_argument("-v", "--version", action="store_true")
+    parser.add_argument("-t", "-s", "--tox", "--slower", action="store_true", help="Run all commands in tox instead of directly")
 
     args = parser.parse_args()
 
@@ -428,7 +430,7 @@ def main():
     except CalledProcessError:
         sys.exit("It looks like you aren't in a git repo")
 
-    current_project = StandardProject(args.debug)
+    current_project = StandardProject(args.tox, args.debug)
 
     for project_class in [
         HProject,
@@ -437,7 +439,7 @@ def main():
         ViaHTMLProject,
         PythonPackageProject,
     ]:
-        project = project_class(args.debug)
+        project = project_class(args.tox, args.debug)
         if project.is_current_project():
             current_project = project
             break
