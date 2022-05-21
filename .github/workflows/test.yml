@@ -1,4 +1,4 @@
-name: Test
+name: Format, lint & test
 on: [push]
 jobs:
   test:
