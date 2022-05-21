@@ -67,8 +67,6 @@ $ testpilot --tox
 
 After doing this once you can usually go back to running `testpilot` without `-t`.
 
-## Speeding up Test Pilot with `--faster`
-
 Although `testpilot` without `-t` won't keep the dependencies in your virtualenv
 up to date it *will* detect if your virtualenv doesn't exist at all and call tox
 to create it.
@@ -88,13 +86,6 @@ testpilot=> Formatting
 testpilot=> It looks like .tox/format/bin/black doesn't exist, running tox to install it
 .tox recreate: /home/seanh/Projects/lms/.tox/.tox
 ...
-```
-
-You can make `testpilot` run slightly faster and more dangerously by disabling
-these checks with `-f` / `--faster`:
-
-```terminal
-$ testpilot --faster
 ```
 
 ## Debugging
