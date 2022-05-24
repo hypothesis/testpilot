@@ -417,7 +417,7 @@ def main():
         "--tox",
         "--slower",
         action="store_true",
-        help="Run all commands in tox instead of directly",
+        help="run all commands in tox instead of directly",
     )
 
     args = parser.parse_args()
