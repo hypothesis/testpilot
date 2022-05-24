@@ -405,7 +405,7 @@ class Run:
         run(self.debug, cmd, shell=True)
 
 
-def main():
+def entry_point():
     parser = argparse.ArgumentParser(
         description="Format, lint and test only the files that have changed on this branch.",
     )

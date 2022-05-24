@@ -7,6 +7,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Create new patch release
-        run: bin/create_new_patch_release.py
+        run: .github/scripts/release.py
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
