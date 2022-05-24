@@ -215,7 +215,6 @@ class StandardProject:
     def install_python(self) -> None:
         """Install the project's Python version(s) if they aren't already installed."""
 
-        log("Installing Python")
         # Run bin/install-python (if it exists) to make sure that the project's
         # version(s) of Python are installed in pyenv (and that tox is
         # installed in each version of Python).
