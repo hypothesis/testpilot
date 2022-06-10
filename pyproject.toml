@@ -98,7 +98,6 @@ disable = [
 
     # We use Black to format our code automatically, so we don't need PyLint to
     # check formatting for us.
-    "bad-continuation",
     "line-too-long",
 
     # We use isort to sort out imports so we don't need PyLint to check import

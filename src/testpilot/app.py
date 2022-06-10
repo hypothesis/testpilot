@@ -73,7 +73,7 @@ class StandardProject:
         return main_branch
 
     @lru_cache()
-    def is_python_file(self, filename: str) -> bool:  # pylint:disable=no-self-use
+    def is_python_file(self, filename: str) -> bool:
         """Return True if `filename` looks like a Python file name."""
         return filename.endswith(".py")
 
@@ -83,22 +83,22 @@ class StandardProject:
         return not self.is_test_file(filename)
 
     @lru_cache()
-    def is_test_file(self, filename: str) -> bool:  # pylint:disable=no-self-use
+    def is_test_file(self, filename: str) -> bool:
         """Return True if `filename` looks like a test file name."""
         return filename.startswith("tests/")
 
     @lru_cache()
-    def is_unit_test_file(self, filename: str) -> bool:  # pylint:disable=no-self-use
+    def is_unit_test_file(self, filename: str) -> bool:
         """Return True if `filename` looks like a unit test file name."""
         return filename.startswith("tests/unit")
 
     @lru_cache()
-    def is_functest_file(self, filename: str) -> bool:  # pylint:disable=no-self-use
+    def is_functest_file(self, filename: str) -> bool:
         """Return True if `filename` looks like a functional test file name."""
         return filename.startswith("tests/functional")
 
     @lru_cache()
-    def test_filename(self, src_filename: str) -> str:  # pylint:disable=no-self-use
+    def test_filename(self, src_filename: str) -> str:
         """
         Return the test filename for the given source filename.
 
@@ -109,7 +109,7 @@ class StandardProject:
         return "tests/unit/" + os.path.splitext(src_filename)[0] + "_test.py"
 
     @lru_cache()
-    def src_filename(self, test_filename: str) -> str:  # pylint:disable=no-self-use
+    def src_filename(self, test_filename: str) -> str:
         """
         Return the source filename for the given test filename.
 
@@ -289,7 +289,7 @@ class StandardProject:
 class HProject(StandardProject):
     """Customizations necessary to make testpilot work with the h project."""
 
-    def is_current_project(self) -> bool:  # pylint:disable=no-self-use
+    def is_current_project(self) -> bool:
         return os.path.isdir("h")
 
     @lru_cache()
@@ -313,7 +313,7 @@ class CheckmateProject(StandardProject):
 
     run_pycodestyle = False
 
-    def is_current_project(self) -> bool:  # pylint:disable=no-self-use
+    def is_current_project(self) -> bool:
         return os.path.isdir("checkmate")
 
 
@@ -322,7 +322,7 @@ class ViaProject(StandardProject):
 
     run_pycodestyle = False
 
-    def is_current_project(self) -> bool:  # pylint:disable=no-self-use
+    def is_current_project(self) -> bool:
         return os.path.isdir("via")
 
 
@@ -331,7 +331,7 @@ class ViaHTMLProject(StandardProject):
 
     run_pycodestyle = False
 
-    def is_current_project(self) -> bool:  # pylint:disable=no-self-use
+    def is_current_project(self) -> bool:
         return os.path.isdir("viahtml")
 
 
@@ -340,7 +340,7 @@ class PythonPackageProject(StandardProject):
 
     run_pycodestyle = False
 
-    def is_current_project(self) -> bool:  # pylint:disable=no-self-use
+    def is_current_project(self) -> bool:
         """
         Return True if the current project is a Python package.
 

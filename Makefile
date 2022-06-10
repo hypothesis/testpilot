@@ -4,56 +4,42 @@ help:
 	@echo "make lint              Run the code linter(s) and print any warnings"
 	@echo "make format            Correctly format the code"
 	@echo "make checkformatting   Crash if the code isn't correctly formatted"
-	@echo "make test              Run all unit tests"
+	@echo "make test              Run the unit tests"
 	@echo "make coverage          Print the unit test coverage report"
 	@echo "make sure              Make sure that the formatter, linter, tests, etc all pass"
-	@echo "make requirements      Re-compile all the requirements/*.txt files"
-	@echo "make release           Create a new patch release on GitHub"
-	@echo "                       Creates a new release from the latest commit on GitHub,"
-	@echo "                       not from the contents of your local copy."
-	@echo "                       Creating a new GitHub release will trigger the publish"
-	@echo "                       workflow on GitHub actions to publish the release to"
-	@echo "                       PyPI.org."
 	@echo "make clean             Delete development artefacts (cached files, "
 	@echo "                       dependencies, etc)"
 
 .PHONY: lint
 lint: python
-	pyenv exec tox -e lint
+	@pyenv exec tox -qe lint
 
 .PHONY: format
 format: python
-	pyenv exec tox -e format
+	@pyenv exec tox -qe format
 
 .PHONY: checkformatting
 checkformatting: python
-	pyenv exec tox -e checkformatting
+	@pyenv exec tox -qe checkformatting
 
 .PHONY: test
 test: python
-	pyenv exec tox
+	@pyenv exec tox -q
 
 .PHONY: coverage
 coverage: python
-	pyenv exec tox -e coverage
+	@pyenv exec tox -qe coverage
 
 .PHONY: sure
-sure: checkformatting lint test coverage
-
-.PHONY: requirements
-requirements:
-	bin/compile-requirements
-
-.PHONY: release
-release:
-	bin/create_new_patch_release.py
+sure: python
+	@pyenv exec tox --parallel -qe 'checkformatting,lint,tests,py{39,38}-tests,coverage'
 
 .PHONY: clean
 clean:
-	rm -rf build dist .tox
-	find . -path '*/__pycache__*' -delete
-	find . -path '*.egg-info*' -delete
+	@rm -rf build dist .tox
+	@find . -path '*/__pycache__*' -delete
+	@find . -path '*.egg-info*' -delete
 
 .PHONY: python
 python:
-	bin/install-python
+	@bin/make_python

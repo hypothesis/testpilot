@@ -1,24 +1,29 @@
 name: Format, lint & test
-on: [push]
+on: [push,workflow_dispatch]
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.8", "3.9", "3.10"]
     env:
       TOX_PARALLEL_NO_SPINNER: 1
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Python ${{ matrix.python-version }}
+      - uses: actions/checkout@v3
+      - name: Install Python 3.8
         uses: actions/setup-python@v3
         with:
-          python-version: ${{ matrix.python-version }}
-          cache: "pip"
-      - name: Upgrade pip
-        run: python -m pip install --upgrade pip
-      - name: Install tox
-        run: python -m pip install tox
-      - name: Run tox
-        run: tox --parallel -e checkformatting,lint,tests,coverage
+          python-version: "3.8"
+      - name: Install Python 3.9
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.9"
+      - name: Install Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('setup.cfg', 'tox.ini') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - run: python -m pip install tox
+      - run: tox --parallel -e 'checkformatting,lint,tests,py{39,38}-tests,coverage'

@@ -6,12 +6,11 @@ branch compared to main:
 
 ```terminal
 $ testpilot
-testpilot=> Installing Python
 testpilot=> Formatting
 testpilot=> Linting
 testpilot=> Running unit tests
 testpilot=> Printing coverage report
-...                                                                                                            [100%]
+...
 Name                                       Stmts   Miss Branch BrPart     Cover   Missing
 -----------------------------------------------------------------------------------------
 lms/app.py                                    44      0      0      0   100.00%
