@@ -4,9 +4,6 @@
 # in pyenv and that tox is installed within each version of Python.
 set -euo pipefail
 
-# Don't install Python on GitHub Actions.
-if [ -n "${GITHUB_ACTIONS+x}" ]; then exit; fi
-
 pyenv_root=$(pyenv root)
 
 for python_version in $(pyenv local); do
