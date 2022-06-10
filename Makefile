@@ -1,6 +1,7 @@
 .PHONY: help
 help:
 	@echo "make help              Show this help message"
+	@echo "make shell             Launch a Python shell in the project's virtualenv"
 	@echo "make lint              Run the code linter(s) and print any warnings"
 	@echo "make format            Correctly format the code"
 	@echo "make checkformatting   Crash if the code isn't correctly formatted"
@@ -9,6 +10,10 @@ help:
 	@echo "make sure              Make sure that the formatter, linter, tests, etc all pass"
 	@echo "make clean             Delete development artefacts (cached files, "
 	@echo "                       dependencies, etc)"
+
+.PHONY: shell
+shell: python
+	@pyenv exec tox -qe dev
 
 .PHONY: lint
 lint: python
