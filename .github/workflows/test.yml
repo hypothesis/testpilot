@@ -1,5 +1,9 @@
 name: Format, lint & test
-on: [push,workflow_dispatch]
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+  - cron: '0 1 * * *'
 jobs:
   test:
     runs-on: ubuntu-latest
