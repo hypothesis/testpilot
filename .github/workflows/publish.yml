@@ -1,8 +1,0 @@
-name: Publish to pypi.org
-on:
-  release:
-    types: [published]
-jobs:
-  publish-to-pypi:
-    uses: hypothesis/workflows/.github/workflows/publish_python_package.yml@main
-    secrets: inherit
