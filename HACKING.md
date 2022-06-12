@@ -7,7 +7,7 @@ First you'll need to install:
 * [GNU Make](https://www.gnu.org/software/make/)
   (this is probably already installed, run `which make` to check)
 * [pyenv](https://github.com/pyenv/pyenv)
-  (you don't need to install pyenv's shell integration, just the `pyenv` command will do.)
+  (you don't need to install pyenv's shell integration "shims", just the `pyenv` command will do.)
 
 Then to set up your development environment and make sure that everything's
 working just clone the git repo and run `make sure`:
