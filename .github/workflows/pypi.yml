@@ -3,6 +3,6 @@ on:
   release:
     types: [published]
 jobs:
-  publish-to-pypi:
+  PyPI:
     uses: hypothesis/workflows/.github/workflows/pypi.yml@main
     secrets: inherit
