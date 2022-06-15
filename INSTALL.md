@@ -1,7 +1,7 @@
-Installing Test Pilot
-=====================
+# Installing Test Pilot
 
-We recommend using [pipx](https://pypa.github.io/pipx/) to install Test Pilot.
+We recommend using [pipx](https://pypa.github.io/pipx/) to install
+Test Pilot.
 First [install pipx](https://pypa.github.io/pipx/#install-pipx) then run:
 
 ```terminal

@@ -1,5 +1,4 @@
-Setting up Your Test Pilot Development Environment
-==================================================
+# Setting up Your Test Pilot Development Environment
 
 First you'll need to install:
 
@@ -18,12 +17,13 @@ cd testpilot
 make sure
 ```
 
-`make sure` will run Test Pilot's code formatting, linting and tests.
-The first run might take a while because it'll be calling `pyenv` to install
-the necessary versions of Python and calling `tox` to install the Python
-dependencies into virtualenvs. Subsequent runs will be faster.
+`make sure` will run Test Pilot's code formatting, linting
+and tests. The first run might take a while because it'll be calling `pyenv` to
+install the necessary versions of Python and calling `tox` to install the
+Python dependencies into virtualenvs. Subsequent runs will be faster.
 
-Run `make help` to see what other development environment commands are available:
+Run `make help` to see what other development environment commands are
+available:
 
 ```
 make help
