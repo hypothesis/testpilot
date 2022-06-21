@@ -1,24 +1,3 @@
-<a href="https://github.com/hypothesis/testpilot/actions/workflows/ci.yml?query=branch%3Amain"><img src="https://img.shields.io/github/workflow/status/hypothesis/testpilot/CI/main"></a>
-<a href="https://pypi.org/project/testpilot/"><img src="https://img.shields.io/pypi/v/testpilot"></a>
-<img src="https://img.shields.io/pypi/pyversions/testpilot">
-<a href="https://github.com/hypothesis/testpilot/blob/main/LICENSE"><img src="https://img.shields.io/github/license/hypothesis/testpilot"></a>
-<a href="https://github.com/hypothesis/cookiecutters/tree/main/pypackage"><img src="https://img.shields.io/badge/cookiecutter-pypackage-brightgreen"></a>
-
-# Test Pilot
-
-Installation
-------------
-
-For installation instructions see [INSTALL.md](INSTALL.md).
-
-Hacking
--------
-
-For how to set up a Test Pilot development environment see
-[HACKING.md](HACKING.md).
-
-Usage
------
 See also: [Test Pilot presentation slides](https://docs.google.com/presentation/d/1zyO8ebsDnz_2j98kBq3JV4oIarhJefCCt8N8qLvuoxw/)
 
 Test Pilot formats, lints and tests the files that have changed on your current

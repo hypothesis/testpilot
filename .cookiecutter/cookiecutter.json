@@ -1,0 +1,17 @@
+{
+  "template": "https://github.com/hypothesis/cookiecutters",
+  "directory": "pypackage",
+  "dont_update": [],
+  "extra_context": {
+    "project_name": "Test Pilot",
+    "project_dir": "testpilot",
+    "project_slug": "testpilot",
+    "short_description": "Format, lint and test only the files that have changed on the current branch.",
+    "python_versions": "3.10.4, 3.9.12, 3.8.13",
+    "github_owner": "hypothesis",
+    "copyright_holder": "Hypothesis",
+    "__entry_point": "testpilot",
+    "__github_url": "https://github.com/hypothesis/testpilot",
+    "__pypi_url": "https://pypi.org/project/testpilot/"
+  }
+}

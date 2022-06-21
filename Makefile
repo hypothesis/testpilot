@@ -7,9 +7,11 @@ help:
 	@echo "make checkformatting   Crash if the code isn't correctly formatted"
 	@echo "make test              Run the unit tests"
 	@echo "make coverage          Print the unit test coverage report"
+	@echo "make functests         Run the functional tests"
 	@echo "make sure              Make sure that the formatter, linter, tests, etc all pass"
 	@echo "make clean             Delete development artefacts (cached files, "
 	@echo "                       dependencies, etc)"
+	@echo "make template          Update the project with the latest from the cookiecutter"
 
 .PHONY: shell
 shell: python
@@ -35,9 +37,17 @@ test: python
 coverage: python
 	@pyenv exec tox -qe coverage
 
+.PHONY: functests
+functests: python
+	@pyenv exec tox -qe functests
+
 .PHONY: sure
 sure: python
-	@pyenv exec tox --parallel -qe 'checkformatting,lint,tests,py{39,38}-tests,coverage'
+	@pyenv exec tox --parallel -qe 'checkformatting,lint,tests,py{39,38}-tests,coverage,functests'
+
+.PHONY: template
+template:
+	@pyenv exec tox -e template
 
 .PHONY: clean
 clean:
