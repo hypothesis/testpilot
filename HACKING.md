@@ -17,6 +17,21 @@ cd testpilot
 make help
 ```
 
+Releasing a New Version of the Project
+--------------------------------------
+
+1. First, to get PyPI publishing working you need to go to:
+   <https://github.com/organizations/hypothesis/settings/secrets/actions/PYPI_TOKEN>
+   and add testpilot to the `PYPI_TOKEN` secret's selected
+   repositories.
+
+2. Now that the testpilot project has access to the `PYPI_TOKEN` secret
+   you can release a new version by just [creating a new GitHub release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
+   Publishing a new GitHub release will automatically trigger
+   [a GitHub Actions workflow](.github/workflows/pypi.yml)
+   that will build the new version of your Python package and upload it to
+   <https://pypi.org/project/testpilot/>.
+
 Changing the Project's Python Versions
 --------------------------------------
 
