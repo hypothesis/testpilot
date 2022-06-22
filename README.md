@@ -9,13 +9,13 @@
 Installation
 ------------
 
-For installation instructions see [INSTALL.md](INSTALL.md).
+For installation instructions see [INSTALL.md](https://github.com/hypothesis/testpilot/blob/main/INSTALL.md).
 
 Hacking
 -------
 
 For how to set up a Test Pilot development environment see
-[HACKING.md](HACKING.md).
+[HACKING.md](https://github.com/hypothesis/testpilot/blob/main/HACKING.md).
 
 Usage
 -----
