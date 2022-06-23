@@ -5,5 +5,5 @@ updates:
   schedule:
     interval: "monthly"
     day: "sunday"
-    time: "01:00"
+    time: "00:00"
     timezone: "Europe/London"
