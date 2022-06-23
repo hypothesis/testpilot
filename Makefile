@@ -9,29 +9,53 @@ help:
 	@echo "make coverage          Print the unit test coverage report"
 	@echo "make functests         Run the functional tests"
 	@echo "make sure              Make sure that the formatter, linter, tests, etc all pass"
+	@echo "make template          Update the project with the latest from the cookiecutter"
 	@echo "make clean             Delete development artefacts (cached files, "
 	@echo "                       dependencies, etc)"
-	@echo "make template          Update the project with the latest from the cookiecutter"
 
 .PHONY: shell
 shell: python
 	@pyenv exec tox -qe dev
 
 .PHONY: lint
-lint: python
+lint: lint-backend lint-frontend
+
+.PHONY: lint-backend
+lint-backend: python
 	@pyenv exec tox -qe lint
 
+.PHONY: lint-frontend
+lint-frontend:
+
 .PHONY: format
-format: python
+format: format-backend format-frontend
+
+.PHONY: format-backend
+format-backend: python
 	@pyenv exec tox -qe format
 
+.PHONY: format-frontend
+format-frontend:
+
 .PHONY: checkformatting
-checkformatting: python
+checkformatting: checkformatting-backend checkformatting-frontend
+
+.PHONY: checkformatting-backend
+checkformatting-backend: python
 	@pyenv exec tox -qe checkformatting
 
+.PHONY: checkformatting-frontend
+checkformatting-frontend:
+
 .PHONY: test
-test: python
+test: test-backend test-frontend
+
+.PHONY: test-backend
+test-backend: python
 	@pyenv exec tox -q
+
+.PHONY: test-frontend
+test-frontend:
 
 .PHONY: coverage
 coverage: python
@@ -42,12 +66,12 @@ functests: python
 	@pyenv exec tox -qe functests
 
 .PHONY: sure
-sure: python
+sure: python checkformatting-frontend lint-frontend test-frontend
 	@pyenv exec tox --parallel -qe 'checkformatting,lint,tests,py{39,38}-tests,coverage,functests'
 
 .PHONY: template
 template:
-	@pyenv exec tox -e template
+	@pyenv exec tox -e template -- $(cookiecutter)
 
 .PHONY: clean
 clean:
@@ -58,3 +82,4 @@ clean:
 .PHONY: python
 python:
 	@bin/make_python
+

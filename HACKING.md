@@ -2,16 +2,20 @@
 
 First you'll need to install:
 
-* [Git](https://git-scm.com/)
-* [GNU Make](https://www.gnu.org/software/make/)
-  (this is probably already installed, run `which make` to check)
-* [pyenv](https://github.com/pyenv/pyenv)
-  (you don't need to install pyenv's shell integration "shims", just the `pyenv` command will do.)
+* [Git](https://git-scm.com/).
+  On Ubuntu: `sudo apt install git`, on macOS: `brew install git`)
+* [GNU Make](https://www.gnu.org/software/make/).
+  This is probably already installed, run `make --version` to check.
+* [pyenv](https://github.com/pyenv/pyenv).
+  Follow the instructions in pyenv's README to install it.
+  The **Homebrew** method works best on macOS.
+  The **Basic GitHub Checkout** method works best on Ubuntu.
+  You _don't_ need to set up pyenv's shell integration ("shims"), you can
+  [use pyenv without shims](https://github.com/pyenv/pyenv#using-pyenv-without-shims).
 
-Then to set up your development environment and make sure that everything's
-working just clone the git repo and run `make sure`:
+Then to set up your development environment:
 
-```
+```terminal
 git clone https://github.com/hypothesis/testpilot.git
 cd testpilot
 make help

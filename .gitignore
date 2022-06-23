@@ -3,3 +3,5 @@ build
 .tox
 *.egg-info
 *.pyc
+supervisord.log
+supervisord.pid
