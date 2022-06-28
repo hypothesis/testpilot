@@ -1,79 +1,79 @@
+comma := ,
+
 .PHONY: help
-help:
-	@echo "make help              Show this help message"
-	@echo "make shell             Launch a Python shell in the project's virtualenv"
-	@echo "make lint              Run the code linter(s) and print any warnings"
-	@echo "make format            Correctly format the code"
-	@echo "make checkformatting   Crash if the code isn't correctly formatted"
-	@echo "make test              Run the unit tests"
-	@echo "make coverage          Print the unit test coverage report"
-	@echo "make functests         Run the functional tests"
-	@echo "make sure              Make sure that the formatter, linter, tests, etc all pass"
-	@echo "make template          Update the project with the latest from the cookiecutter"
-	@echo "make clean             Delete development artefacts (cached files, "
-	@echo "                       dependencies, etc)"
+help = help::; @echo $$$$(tput bold)$(strip $(1)):$$$$(tput sgr0) $(strip $(2))
+$(call help,make help,print this help message)
 
 .PHONY: shell
+$(call help,make shell,"launch a Python shell in this project's virtualenv")
 shell: python
 	@pyenv exec tox -qe dev
 
 .PHONY: lint
-lint: lint-backend lint-frontend
-
-.PHONY: lint-backend
-lint-backend: python
+$(call help,make lint,"lint the code and print any warnings")
+lint: python
 	@pyenv exec tox -qe lint
 
-.PHONY: lint-frontend
-lint-frontend:
-
 .PHONY: format
-format: format-backend format-frontend
-
-.PHONY: format-backend
-format-backend: python
+$(call help,make format,"format the code")
+format: python
 	@pyenv exec tox -qe format
 
-.PHONY: format-frontend
-format-frontend:
-
 .PHONY: checkformatting
-checkformatting: checkformatting-backend checkformatting-frontend
-
-.PHONY: checkformatting-backend
-checkformatting-backend: python
+$(call help,make checkformatting,"crash if the code isn't correctly formatted")
+checkformatting: python
 	@pyenv exec tox -qe checkformatting
 
-.PHONY: checkformatting-frontend
-checkformatting-frontend:
-
 .PHONY: test
-test: test-backend test-frontend
+$(call help,make test,"run the unit tests in Python 3.10")
+coverage: test
+test: python
+	@pyenv exec tox -qe tests
 
-.PHONY: test-backend
-test-backend: python
-	@pyenv exec tox -q
+.PHONY: test-py39
+$(call help,make test-py39,"run the unit tests in Python 3.9")
+coverage: test-py39
+test-py39: python
+	@pyenv exec tox -qe py39-tests
 
-.PHONY: test-frontend
-test-frontend:
+.PHONY: test-py38
+$(call help,make test-py38,"run the unit tests in Python 3.8")
+coverage: test-py38
+test-py38: python
+	@pyenv exec tox -qe py38-tests
 
 .PHONY: coverage
+$(call help,make coverage,"run the tests and print the coverage report")
 coverage: python
 	@pyenv exec tox -qe coverage
 
 .PHONY: functests
+$(call help,make functests,"run the functional tests in Python 3.10")
 functests: python
 	@pyenv exec tox -qe functests
 
+.PHONY: functests-py39
+$(call help,make functests-py39,"run the functional tests in Python 3.9")
+functests-py39: python
+	@pyenv exec tox -qe py39-functests
+
+.PHONY: functests-py38
+$(call help,make functests-py38,"run the functional tests in Python 3.8")
+functests-py38: python
+	@pyenv exec tox -qe py38-functests
+
 .PHONY: sure
-sure: python checkformatting-frontend lint-frontend test-frontend
-	@pyenv exec tox --parallel -qe 'checkformatting,lint,tests,py{39,38}-tests,coverage,functests'
+$(call help,make sure,"make sure that the formatting$(comma) linting and tests all pass")
+sure:
+	@pyenv exec tox --parallel -qe 'checkformatting,lint,tests,py{39,38}-tests,coverage,functests,py{39,38}-functests'
 
 .PHONY: template
-template:
+$(call help,make template,"update from the latest cookiecutter template")
+template: python
 	@pyenv exec tox -e template -- $(cookiecutter)
 
 .PHONY: clean
+$(call help,make clean,"delete temporary files etc")
 clean:
 	@rm -rf build dist .tox
 	@find . -path '*/__pycache__*' -delete
@@ -83,3 +83,4 @@ clean:
 python:
 	@bin/make_python
 
+-include testpilot.mk
