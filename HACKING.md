@@ -3,7 +3,7 @@
 First you'll need to install:
 
 * [Git](https://git-scm.com/).
-  On Ubuntu: `sudo apt install git`, on macOS: `brew install git`)
+  On Ubuntu: `sudo apt install git`, on macOS: `brew install git`.
 * [GNU Make](https://www.gnu.org/software/make/).
   This is probably already installed, run `make --version` to check.
 * [pyenv](https://github.com/pyenv/pyenv).
