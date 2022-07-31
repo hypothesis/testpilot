@@ -1,10 +1,6 @@
-import argparse
 import os
 import subprocess
-import sys
 from functools import lru_cache
-from importlib.metadata import version
-from subprocess import CalledProcessError
 from typing import List
 
 import toml
@@ -403,54 +399,3 @@ class Run:
         cmd = fmt.format(env=env, cmd=cmd, args=" ".join(args))
 
         run(self.debug, cmd, shell=True)
-
-
-def entry_point():
-    parser = argparse.ArgumentParser(
-        description="Format, lint and test only the files that have changed on this branch.",
-    )
-    parser.add_argument("-d", "--debug", action="store_true")
-    parser.add_argument("-v", "--version", action="store_true")
-    parser.add_argument(
-        "-t",
-        "-s",
-        "--tox",
-        "--slower",
-        action="store_true",
-        help="run all commands in tox instead of directly",
-    )
-
-    args = parser.parse_args()
-
-    if args.version:
-        print(version("testpilot"))
-        sys.exit()
-
-    try:
-        run(
-            args.debug,
-            ["git", "rev-parse", "--is-inside-work-tree"],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.STDOUT,
-        )
-    except CalledProcessError:
-        sys.exit("It looks like you aren't in a git repo")
-
-    current_project = StandardProject(args.tox, args.debug)
-
-    for project_class in [
-        HProject,
-        CheckmateProject,
-        ViaProject,
-        ViaHTMLProject,
-        PythonPackageProject,
-    ]:
-        project = project_class(args.tox, args.debug)
-        if project.is_current_project():
-            current_project = project
-            break
-
-    if args.debug:
-        log(f"Project class: {type(current_project)}")
-
-    current_project.run_all()

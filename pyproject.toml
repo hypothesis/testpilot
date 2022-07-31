@@ -44,7 +44,10 @@ branch = true
 parallel = true
 source = ["testpilot", "tests/unit"]
 omit = [
-    "*/testpilot/main.py",  # Test Pilot doesn't have any tests for now.
+    "*/testpilot/__main__.py",
+    # Test Pilot doesn't have any tests for now.
+    "*/testpilot/core.py",
+    "*/testpilot/cli.py",
 ]
 
 [tool.coverage.paths]
