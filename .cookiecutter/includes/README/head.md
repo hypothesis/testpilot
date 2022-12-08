@@ -1,4 +1,3 @@
-
 See also: [Test Pilot presentation slides](https://docs.google.com/presentation/d/1zyO8ebsDnz_2j98kBq3JV4oIarhJefCCt8N8qLvuoxw/)
 
 Test Pilot formats, lints and tests the files that have changed on your current
