@@ -138,4 +138,4 @@ score = "no"
 
 [tool.hdev]
 project_name = "Test Pilot"
-project_type = "package"
+project_type = "library"

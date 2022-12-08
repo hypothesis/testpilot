@@ -4,6 +4,10 @@ comma := ,
 help = help::; @echo $$$$(tput bold)$(strip $(1)):$$$$(tput sgr0) $(strip $(2))
 $(call help,make help,print this help message)
 
+.PHONY: services
+
+.PHONY: devdata
+
 .PHONY: shell
 $(call help,make shell,"launch a Python shell in this project's virtualenv")
 shell: python
@@ -26,26 +30,23 @@ checkformatting: python
 
 .PHONY: test
 $(call help,make test,"run the unit tests in Python 3.10")
-coverage: test
 test: python
 	@pyenv exec tox -qe tests
 
 .PHONY: test-py39
 $(call help,make test-py39,"run the unit tests in Python 3.9")
-coverage: test-py39
 test-py39: python
 	@pyenv exec tox -qe py39-tests
 
 .PHONY: test-py38
 $(call help,make test-py38,"run the unit tests in Python 3.8")
-coverage: test-py38
 test-py38: python
 	@pyenv exec tox -qe py38-tests
 
 .PHONY: coverage
 $(call help,make coverage,"run the tests and print the coverage report")
 coverage: python
-	@pyenv exec tox -qe coverage
+	@pyenv exec tox --parallel -qe 'tests,py{39,38}-tests,coverage'
 
 .PHONY: functests
 $(call help,make functests,"run the functional tests in Python 3.10")
@@ -64,6 +65,7 @@ functests-py38: python
 
 .PHONY: sure
 $(call help,make sure,"make sure that the formatting$(comma) linting and tests all pass")
+sure: python
 sure:
 	@pyenv exec tox --parallel -qe 'checkformatting,lint,tests,py{39,38}-tests,coverage,functests,py{39,38}-functests'
 
