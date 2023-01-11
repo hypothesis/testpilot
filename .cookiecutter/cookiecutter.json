@@ -16,6 +16,7 @@
     "__entry_point": "testpilot",
     "__github_url": "https://github.com/hypothesis/testpilot",
     "__pypi_url": "https://pypi.org/project/testpilot/",
-    "__copyright_year": "2022"
+    "__copyright_year": "2022",
+    "pypi": "yes"
   }
 }
