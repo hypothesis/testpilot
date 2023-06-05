@@ -90,6 +90,8 @@ load-plugins = [
 fail-on = ["C", "E", "F", "I", "R", "W"]
 
 [tool.pylint.messages_control]
+ignore-paths=[
+]
 enable = [
     "bad-inline-option",
     "deprecated-pragma",
@@ -139,5 +141,5 @@ output-format = "colorized"
 score = "no"
 
 [tool.hdev]
-project_name = "Test Pilot"
+project_name = "testpilot"
 project_type = "library"
