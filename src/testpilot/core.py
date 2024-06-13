@@ -174,7 +174,7 @@ class StandardProject:
         # We can't format, lint or test files that don't exist so (now that
         # we've found their corresponding source or test files) remove deleted
         # files from the list.
-        files = [f for f in files if os.path.isfile(f)]
+        files = set(f for f in files if os.path.isfile(f))
 
         return sorted(files)
 
