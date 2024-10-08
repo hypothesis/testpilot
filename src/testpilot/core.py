@@ -211,15 +211,10 @@ class StandardProject:
     def install_python(self) -> None:
         """Install the project's Python version(s) if they aren't already installed."""
 
-        # Run bin/install-python (if it exists) to make sure that the project's
-        # version(s) of Python are installed in pyenv (and that tox is
-        # installed in each version of Python).
-        if os.path.isfile("bin/install-python"):
-            run(self.debug, ["bin/install-python"])
-        else:
-            # Some projects don't have bin/install-python because it was moved
-            # to `hdev/install-python`.
-            run(self.debug, ["hdev", "install-python"])
+        # Run bin/install-python to make sure that the project's version(s) of
+        # Python are installed in pyenv (and that tox is installed in each
+        # version of Python).
+        run(self.debug, ["bin/install-python"])
 
     def format(self) -> None:
         """Run the code formatters on all modified files."""
