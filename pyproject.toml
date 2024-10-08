@@ -161,8 +161,3 @@ module= [
   "tests.*",
 ]
 ignore_errors = true
-
-
-[tool.hdev]
-project_name = "testpilot"
-project_type = "library"
