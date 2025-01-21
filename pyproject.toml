@@ -2,6 +2,29 @@
 requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
+[project]
+dynamic = ["version"]
+name = "testpilot"
+description = "Format, lint and test only the files that have changed on the current branch."
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Intended Audience :: Developers",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "toml",
+]
+
+[project.urls]
+Repository = "https://github.com/hypothesis/testpilot"
+Issues = "https://github.com/hypothesis/testpilot/issues"
+Changelog = "https://github.com/hypothesis/testpilot/releases"
+
+[project.scripts]
+testpilot = "testpilot.cli:cli"
+
 [tool.setuptools_scm]
 
 [tool.pytest.ini_options]
